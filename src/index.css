@@ -126,6 +126,20 @@
   transform: translateZ(0);
 }
 
+.animate-gradient {
+  background: linear-gradient(270deg, #9333ea, #3b82f6, #ec4899, #9333ea);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 @keyframes mulShdSpin {
   0%,
   100% {
