@@ -82,6 +82,16 @@ Configured for Replit Autoscale deployment:
 - Run command: `npx vite preview --port 5000 --host 0.0.0.0`
 
 ## Recent Changes
+- **2025-10-03**: Personalized portfolio for Deepanshu
+  - Updated Hero section: "Hi, I'm Deepanshu" with custom subtitle
+  - Changed page title to "Deepanshu | Student Portfolio"
+  - Created new custom About component with:
+    - Two-column responsive layout (text left, photo right)
+    - Personal introduction with purple accent on name
+    - Download CV and View Projects buttons (purple theme)
+    - Circular profile photo placeholder with animated gradient border
+    - Three stats cards: 3 Projects, 2 Certificates, 1+ Years Learning
+    - Full responsive design (stacks on mobile, side-by-side on desktop)
 - **2025-10-03**: Initial setup in Replit environment
   - Configured Vite for Replit (port 5000, HMR via WSS)
   - Installed dependencies with legacy peer deps
