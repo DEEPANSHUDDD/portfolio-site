@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
+import myPhoto from "../assets/me.jpg";
 
 const StatCard = ({ icon, number, label }) => (
   <motion.div
@@ -52,15 +53,11 @@ const About = () => {
           variants={fadeIn("left", "tween", 0.2, 1)}
           className='flex justify-center'
         >
-          <div className='relative w-64 h-64'>
-            <div className='absolute inset-0 rounded-full bg-gradient-to-br from-[#915EFF] via-[#7c3aed] to-[#915EFF] p-1 animate-pulse'>
-              <div className='w-full h-full rounded-full bg-tertiary flex items-center justify-center overflow-hidden'>
-                <div className='w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center'>
-                  <span className='text-6xl'>👤</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <img 
+            src={myPhoto} 
+            alt='Deepanshu' 
+            className='w-60 h-60 rounded-full object-cover shadow-xl border-4 border-purple-500'
+          />
         </motion.div>
       </div>
 
