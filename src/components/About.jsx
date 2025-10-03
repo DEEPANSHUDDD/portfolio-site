@@ -4,6 +4,7 @@ import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 import myPhoto from "../assets/me.jpg";
+import CV from "../assets/Deepanshu_CV.pdf";
 
 const StatCard = ({ icon, number, label }) => (
   <motion.div
@@ -40,10 +41,24 @@ const About = () => {
             I'm a student passionate about learning web development and building modern, interactive projects with React, Three.js, and other cutting-edge technologies. I enjoy solving problems, exploring creative designs, and growing my skills through real-world projects.
           </p>
           <div className='flex flex-wrap gap-4 mt-4'>
-            <button className='bg-[#915EFF] hover:bg-[#7c3aed] text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center gap-2'>
+            <a 
+              href={CV} 
+              download="Deepanshu_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className='bg-[#915EFF] hover:bg-[#7c3aed] text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center gap-2'
+            >
               <span>📄</span> Download CV
-            </button>
-            <button className='border-2 border-[#915EFF] text-[#915EFF] hover:bg-[#915EFF] hover:text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center gap-2'>
+            </a>
+            <button 
+              onClick={() => {
+                const workSection = document.getElementById('work');
+                if (workSection) {
+                  workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className='border-2 border-[#915EFF] text-[#915EFF] hover:bg-[#915EFF] hover:text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center gap-2'
+            >
               <span>👁️</span> View Projects
             </button>
           </div>
