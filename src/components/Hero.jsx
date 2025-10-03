@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
@@ -15,13 +16,33 @@ const Hero = () => {
         </div>
 
         <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className='text-[#915EFF]'>Deepanshu</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I'm a student passionate about learning web development <br className='sm:block hidden' />
-            and creating interactive projects with modern tools and design.
-          </p>
+          <motion.h1
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className='text-5xl md:text-7xl font-bold text-white text-center'
+          >
+            Hi, I'm{" "}
+            <span className='text-[#a855f7]'>
+              <Typewriter
+                words={["Deepanshu", "a Developer", "a Designer"]}
+                loop={0}
+                cursor
+                cursorStyle='|'
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+            className='text-lg text-gray-400 text-center mt-6'
+          >
+            I'm a student passionate about learning web development and creating interactive projects with modern tools and design.
+          </motion.p>
         </div>
       </div>
 
