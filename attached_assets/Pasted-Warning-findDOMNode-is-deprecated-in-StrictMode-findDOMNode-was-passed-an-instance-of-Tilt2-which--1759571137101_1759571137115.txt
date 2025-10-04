@@ -1,0 +1,39 @@
+Warning: findDOMNode is deprecated in StrictMode. findDOMNode was passed an instance of Tilt2 which is inside StrictMode. Instead, add a ref directly to the element you want to reference. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-find-node
+    at div
+    at Tilt2 (https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/node_modules/.vite/deps/react-tilt.js?v=ba7ec20a:75:9)
+    at div
+    at MotionComponent (https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/node_modules/.vite/deps/framer-motion.js?v=ba7ec20a:299:40)
+    at ProjectCard (https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/src/components/Works.jsx:25:3)
+    at div
+    at Works
+    at section
+    at MotionComponent (https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/node_modules/.vite/deps/framer-motion.js?v=ba7ec20a:299:40)
+    at HOC
+    at div
+    at Router (https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=ba7ec20a:3267:15)
+    at BrowserRouter (https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=ba7ec20a:3680:5)
+    at App
+THREE.BufferGeometry.computeBoundingSphere(): Computed radius is NaN. The &quot;position&quot; attribute is likely to have NaN values. 
+BufferGeometry {isBufferGeometry: true, uuid: "4a7ad892-46e5-423a-9953-3d0447eecf1d", name: "", type: "BufferGeometry", index: null, …}
+attributes: Object
+boundingBox: null
+boundingSphere: Object
+drawRange: Object
+groups: Array(0)
+index: null
+isBufferGeometry: true
+morphAttributes: Object
+morphTargetsRelative: false
+name: ""
+type: "BufferGeometry"
+userData: Object
+uuid: "4a7ad892-46e5-423a-9953-3d0447eecf1d"
+__r3f: Object
+_listeners: Object
+id: 705
+[[Prototype]]: Object
+
+at t.value (https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://cce35862-c9dd-4a0e-b20a-4b539bceea60-00-1qqoiznjkl92f.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eru
