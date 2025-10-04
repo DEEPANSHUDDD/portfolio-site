@@ -82,13 +82,14 @@ Configured for Replit Autoscale deployment:
 - Run command: `npx vite preview --port 5000 --host 0.0.0.0`
 
 ## Recent Changes
-- **2025-10-04**: GitHub Import Setup for Replit
-  - Installed all dependencies with `--legacy-peer-deps` flag
-  - Configured Vite development server for Replit environment
+- **2025-10-04**: Completed GitHub Import Setup for Replit
+  - Verified all dependencies are installed
+  - Configured Vite development server for Replit environment (port 5000, host 0.0.0.0)
   - Set up workflow for 3D Portfolio on port 5000 with webview output
-  - Added production start script for deployment
-  - Configured Autoscale deployment with build and start commands
+  - Added production start script (`npm run start`) for deployment
+  - Configured Autoscale deployment with build and preview commands
   - Verified application running successfully with Vite HMR
+  - WebGL context warnings in screenshot tool are expected (3D works in real browsers)
 - **2025-10-03**: Personalized portfolio for Deepanshu
   - Updated Hero section: "Hi, I'm Deepanshu" with custom subtitle
   - Changed page title to "Deepanshu | Student Portfolio"

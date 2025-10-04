@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './',   // 👈 this fixes GitHub Pages blank page
+  base: './',
 
   server: {
     host: '0.0.0.0',
@@ -17,5 +17,9 @@ export default defineConfig({
       protocol: 'wss',
       host: process.env.REPLIT_DEV_DOMAIN || 'localhost',
     },
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 5000,
   },
 })
