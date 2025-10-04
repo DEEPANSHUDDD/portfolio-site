@@ -7,7 +7,7 @@ import WebGLFallback from "../WebGLFallback";
 import { isMobileDevice, isWebGLAvailable, getMobileOptimizedDpr } from "../../utils/deviceDetection";
 
 const Earth = ({ isMobile }) => {
-  const earth = useGLTF("./planet/scene.gltf");
+  const earth = useGLTF(`${import.meta.env.BASE_URL}planet/scene.gltf`);
   const [modelReady, setModelReady] = useState(false);
 
   useEffect(() => {
@@ -70,6 +70,13 @@ const EarthCanvas = () => {
     );
   }
 
+  // On mobile, render a static gradient container to avoid WebGL instability
+  if (isMobile) {
+    return (
+      <div className="w-full h-full min-h-[300px] bg-gradient-to-b from-gray-900 to-black rounded-xl" />
+    );
+  }
+
   return (
     <Canvas
       shadows={!isMobile}
@@ -81,7 +88,7 @@ const EarthCanvas = () => {
         powerPreference: isMobile ? 'low-power' : 'high-performance'
       }}
       camera={{
-        fov: isMobile ? 50 : 45,
+        fov: isMobile ? 55 : 45,
         near: 0.1,
         far: 200,
         position: [-4, 3, 6],

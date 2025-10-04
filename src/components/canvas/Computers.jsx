@@ -5,9 +5,10 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 import WebGLFallback from "../WebGLFallback";
 import { isMobileDevice, isWebGLAvailable, getMobileOptimizedDpr } from "../../utils/deviceDetection";
+import { web } from "../../assets";
 
 const Computers = ({ isMobile }) => {
-  const computer = useGLTF("./desktop_pc/scene.gltf");
+  const computer = useGLTF(`${import.meta.env.BASE_URL}desktop_pc/scene.gltf`);
   const [modelReady, setModelReady] = useState(false);
 
   useEffect(() => {
@@ -45,13 +46,13 @@ const Computers = ({ isMobile }) => {
         penumbra={1}
         intensity={1}
         castShadow={!isMobile}
-        shadow-mapSize={isMobile ? 512 : 1024}
+        shadow-mapSize={isMobile ? 256 : 1024}
       />
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
+        scale={isMobile ? 0.6 : 0.75}
+        position={isMobile ? [0, -3.2, -2.4] : [0, -3.25, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
@@ -81,8 +82,17 @@ const ComputersCanvas = () => {
 
   if (!webGLSupported) {
     return (
-      <div className="w-full h-[600px]">
+      <div className="w-full h-[320px] sm:h-[420px] md:h-[520px]">
         <WebGLFallback message="3D model requires WebGL support" />
+      </div>
+    );
+  }
+
+  // On mobile, render a static image instead of a 3D canvas for stability
+  if (isMobile) {
+    return (
+      <div className="w-full h-[280px] sm:h-[360px] md:h-[420px] flex items-center justify-center">
+        <img src={web} alt="Computer" className="max-h-full object-contain" loading="lazy" decoding="async" />
       </div>
     );
   }
@@ -98,14 +108,16 @@ const ComputersCanvas = () => {
         antialias: !isMobile,
         powerPreference: isMobile ? 'low-power' : 'high-performance'
       }}
+      style={{ touchAction: 'pan-y' }}
       performance={{ min: isMobile ? 0.5 : 0.75 }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
+          enabled
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
-          enableDamping={!isMobile}
+          enableDamping
           dampingFactor={0.05}
         />
         <Computers isMobile={isMobile} />

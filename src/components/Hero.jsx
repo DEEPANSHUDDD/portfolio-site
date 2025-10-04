@@ -76,7 +76,9 @@ const Hero = () => {
 
       {/* 3D Canvas */}
       {/* Defer 3D canvas mount until in-view via App-level LazyViewport */}
-      <ComputersCanvas />
+      <div className="touch-pan-y">
+        <ComputersCanvas />
+      </div>
 
       {/* Scroll indicator */}
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
