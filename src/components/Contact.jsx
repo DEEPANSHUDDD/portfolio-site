@@ -5,7 +5,6 @@ let toastRef; // avoid importing react-hot-toast in initial chunk
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
-import LazyViewport from "./LazyViewport";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
@@ -150,11 +149,7 @@ const Contact = () => {
         variants={slideIn("right", "tween", 0.2, 1)}
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
       >
-        <LazyViewport minHeight={300} rootMargin="200px 0px" threshold={0.2}>
-          <div className='w-full h-full [&>canvas]:touch-pan-y'>
-            <EarthCanvas />
-          </div>
-        </LazyViewport>
+        <EarthCanvas />
       </motion.div>
     </div>
   );

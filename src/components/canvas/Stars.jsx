@@ -42,12 +42,10 @@ const Stars = ({ isMobile }) => {
 const StarsCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [webGLSupported, setWebGLSupported] = useState(true);
-  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     setWebGLSupported(isWebGLAvailable());
     setIsMobile(isMobileDevice());
-    setIsDesktop(!isMobileDevice());
 
     const handleResize = () => {
       setIsMobile(isMobileDevice());
@@ -57,12 +55,6 @@ const StarsCanvas = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  if (!isDesktop) {
-    return (
-      <div className='w-full h-auto absolute inset-0 z-[-1] bg-gradient-to-b from-gray-900 to-black' />
-    );
-  }
-
   if (!webGLSupported) {
     return (
       <div className='w-full h-auto absolute inset-0 z-[-1] bg-gradient-to-b from-gray-900 to-black' />
@@ -70,9 +62,8 @@ const StarsCanvas = () => {
   }
 
   return (
-    <div className='w-full h-auto absolute inset-0 z-[-1] touch-pan-y'>
+    <div className='w-full h-auto absolute inset-0 z-[-1]'>
       <Canvas 
-        frameloop='demand'
         camera={{ position: [0, 0, 1] }}
         dpr={getMobileOptimizedDpr()}
         gl={{
@@ -80,7 +71,6 @@ const StarsCanvas = () => {
           powerPreference: isMobile ? 'low-power' : 'default'
         }}
         performance={{ min: isMobile ? 0.3 : 0.5 }}
-        className='touch-pan-y'
       >
         <Suspense fallback={null}>
           <Stars isMobile={isMobile} />

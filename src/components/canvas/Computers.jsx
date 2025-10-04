@@ -4,11 +4,10 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 import WebGLFallback from "../WebGLFallback";
-import { isMobileDevice, isWebGLAvailable, getMobileOptimizedDpr, assetUrl } from "../../utils/deviceDetection";
+import { isMobileDevice, isWebGLAvailable, getMobileOptimizedDpr } from "../../utils/deviceDetection";
 
 const Computers = ({ isMobile }) => {
-  // Use absolute path based on Vite base URL for reliability
-  const computer = useGLTF(assetUrl("/desktop_pc/scene.gltf"));
+  const computer = useGLTF("./desktop_pc/scene.gltf");
   const [modelReady, setModelReady] = useState(false);
 
   useEffect(() => {
@@ -51,8 +50,8 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.6 : 0.75}
-        position={isMobile ? [0, -3.4, -2.2] : [0, -3.25, -1.5]}
+        scale={isMobile ? 0.7 : 0.75}
+        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
@@ -62,14 +61,12 @@ const Computers = ({ isMobile }) => {
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [webGLSupported, setWebGLSupported] = useState(true);
-  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     setWebGLSupported(isWebGLAvailable());
     
     const mediaQuery = window.matchMedia("(max-width: 768px)");
     setIsMobile(mediaQuery.matches);
-    setIsDesktop(!mediaQuery.matches);
 
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
@@ -90,25 +87,10 @@ const ComputersCanvas = () => {
     );
   }
 
-  // Render only on desktop to avoid blank/oversized 3D on small screens
-  if (!isDesktop) {
-    return (
-      <div className="w-full h-[300px] md:h-[600px] flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-        <img
-          src={assetUrl('/assets/mobile.png')}
-          alt="3D preview"
-          loading="lazy"
-          decoding="async"
-          className="w-auto h-full object-contain opacity-80"
-        />
-      </div>
-    );
-  }
-
   return (
     <Canvas
       frameloop='demand'
-      shadows={false}
+      shadows={!isMobile}
       dpr={getMobileOptimizedDpr()}
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ 
@@ -120,7 +102,7 @@ const ComputersCanvas = () => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
-          enableZoom={!isMobile}
+          enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
           enableDamping={!isMobile}
