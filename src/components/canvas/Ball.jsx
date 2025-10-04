@@ -78,7 +78,7 @@ const BallCanvas = ({ icon }) => {
       frameloop='demand'
       dpr={getMobileOptimizedDpr()}
       gl={{ 
-        preserveDrawingBuffer: true,
+        preserveDrawingBuffer: false,
         antialias: !isMobile,
         powerPreference: isMobile ? 'low-power' : 'default'
       }}

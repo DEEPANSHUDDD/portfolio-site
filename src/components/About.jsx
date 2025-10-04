@@ -72,6 +72,8 @@ const About = () => {
           <img 
             src={myPhoto} 
             alt='Deepanshu' 
+            loading='lazy'
+            decoding='async'
             className='w-60 h-60 rounded-full object-cover shadow-xl border-4 border-purple-500 object-[50%_20%]'
           />
         </motion.div>

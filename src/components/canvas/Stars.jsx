@@ -30,7 +30,7 @@ const Stars = ({ isMobile }) => {
         <PointMaterial
           transparent
           color='#f272c8'
-          size={isMobile ? 0.0015 : 0.002}
+          size={isMobile ? 0.0015 : 0.0018}
           sizeAttenuation={true}
           depthWrite={false}
         />

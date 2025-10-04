@@ -94,7 +94,7 @@ const ComputersCanvas = () => {
       dpr={getMobileOptimizedDpr()}
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ 
-        preserveDrawingBuffer: true,
+        preserveDrawingBuffer: false,
         antialias: !isMobile,
         powerPreference: isMobile ? 'low-power' : 'high-performance'
       }}
