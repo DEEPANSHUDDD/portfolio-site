@@ -3,6 +3,7 @@ import { Typewriter } from "react-simple-typewriter";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import LazyViewport from "./LazyViewport";
 
 // Variants for word-by-word animation
 const sentence = {
@@ -74,9 +75,12 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 3D Canvas */}
-      {/* Defer 3D canvas mount until in-view via App-level LazyViewport */}
-      <ComputersCanvas />
+      {/* 3D Canvas: mount only when in view; mobile shows fallback inside component */}
+      <LazyViewport minHeight={300} rootMargin="200px 0px" threshold={0.2}>
+        <div className="[&>canvas]:touch-pan-y">
+          <ComputersCanvas />
+        </div>
+      </LazyViewport>
 
       {/* Scroll indicator */}
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
