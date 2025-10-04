@@ -3,8 +3,10 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
+import WebGLFallback from "../WebGLFallback";
+import { isMobileDevice, isWebGLAvailable, getMobileOptimizedDpr } from "../../utils/deviceDetection";
 
-const Earth = () => {
+const Earth = ({ isMobile }) => {
   const earth = useGLTF("./planet/scene.gltf");
   const [modelReady, setModelReady] = useState(false);
 
@@ -35,32 +37,67 @@ const Earth = () => {
   }
 
   return (
-    <primitive object={earth.scene} scale={2.5} position-y={0} rotation-y={0} />
+    <primitive 
+      object={earth.scene} 
+      scale={isMobile ? 2.0 : 2.5} 
+      position-y={0} 
+      rotation-y={0} 
+    />
   );
 };
 
 const EarthCanvas = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [webGLSupported, setWebGLSupported] = useState(true);
+
+  useEffect(() => {
+    setWebGLSupported(isWebGLAvailable());
+    setIsMobile(isMobileDevice());
+
+    const handleResize = () => {
+      setIsMobile(isMobileDevice());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  if (!webGLSupported) {
+    return (
+      <div className="w-full h-full min-h-[300px]">
+        <WebGLFallback message="Earth model requires WebGL support" />
+      </div>
+    );
+  }
+
   return (
     <Canvas
-      shadows
+      shadows={!isMobile}
       frameloop='demand'
-      dpr={[1, 2]}
-      gl={{ preserveDrawingBuffer: true }}
+      dpr={getMobileOptimizedDpr()}
+      gl={{ 
+        preserveDrawingBuffer: true,
+        antialias: !isMobile,
+        powerPreference: isMobile ? 'low-power' : 'high-performance'
+      }}
       camera={{
-        fov: 45,
+        fov: isMobile ? 50 : 45,
         near: 0.1,
         far: 200,
         position: [-4, 3, 6],
       }}
+      performance={{ min: isMobile ? 0.5 : 0.75 }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
-          autoRotate
+          autoRotate={!isMobile}
+          autoRotateSpeed={isMobile ? 0 : 0.5}
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
+          enableDamping={!isMobile}
         />
-        <Earth />
+        <Earth isMobile={isMobile} />
 
         <Preload all />
       </Suspense>

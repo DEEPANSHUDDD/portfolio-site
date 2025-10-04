@@ -82,6 +82,18 @@ Configured for Replit Autoscale deployment:
 - Run command: `npx vite preview --port 5000 --host 0.0.0.0`
 
 ## Recent Changes
+- **2025-10-04**: Mobile Optimization for 3D Canvas Elements
+  - Fixed blank/white sections on mobile devices where 3D elements should render
+  - Created device detection utilities (isMobileDevice, isWebGLAvailable, getMobileOptimizedDpr)
+  - Added WebGL fallback component for unsupported devices
+  - Optimized all Canvas components (Computers, Earth, Ball, Stars) for mobile:
+    - Reduced devicePixelRatio to max 1.5 on mobile (vs [1,2] on desktop)
+    - Disabled shadows, antialiasing, and heavy animations on mobile
+    - Reduced star count from 5000 to 2000 on mobile
+    - Disabled Float animations on Ball components for mobile
+    - Set powerPreference to 'low-power' on mobile GPUs
+    - Added performance thresholds: 0.3-0.5 (mobile) vs 0.5-0.75 (desktop)
+  - Site now renders smoothly on both desktop and mobile devices
 - **2025-10-04**: Completed GitHub Import Setup for Replit
   - Verified all dependencies are installed
   - Configured Vite development server for Replit environment (port 5000, host 0.0.0.0)
