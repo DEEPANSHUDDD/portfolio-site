@@ -6,23 +6,33 @@ import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
+  const [modelReady, setModelReady] = useState(false);
 
   useEffect(() => {
-    if (computer.scene) {
+    if (computer.scene && !modelReady) {
       computer.scene.traverse((child) => {
         if (child.geometry && child.geometry.attributes.position) {
           const positions = child.geometry.attributes.position.array;
+          let hasNaN = false;
           for (let i = 0; i < positions.length; i++) {
             if (isNaN(positions[i])) {
               positions[i] = 0;
+              hasNaN = true;
             }
           }
-          child.geometry.attributes.position.needsUpdate = true;
-          child.geometry.computeBoundingSphere();
+          if (hasNaN) {
+            child.geometry.attributes.position.needsUpdate = true;
+            child.geometry.computeBoundingSphere();
+          }
         }
       });
+      setModelReady(true);
     }
-  }, [computer]);
+  }, [computer, modelReady]);
+
+  if (!modelReady) {
+    return null;
+  }
 
   return (
     <mesh>
