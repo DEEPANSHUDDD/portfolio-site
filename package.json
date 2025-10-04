@@ -2,7 +2,7 @@
   "name": "3dfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://DEEPANSHUDDD.github.io/portfolio-site",
+  "homepage": "https://deepanshuddd.github.io/portfolio-site",
   "type": "module",
   "scripts": {
   "dev": "vite",
