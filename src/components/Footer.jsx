@@ -1,5 +1,8 @@
 import React from 'react';
-import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import { lazy, Suspense } from 'react';
+const FaLinkedin = lazy(() => import('react-icons/fa').then(m => ({ default: m.FaLinkedin })));
+const FaGithub = lazy(() => import('react-icons/fa').then(m => ({ default: m.FaGithub })));
+const FaInstagram = lazy(() => import('react-icons/fa').then(m => ({ default: m.FaInstagram })));
 
 const Footer = () => {
   return (
@@ -16,7 +19,9 @@ const Footer = () => {
             rel='noopener noreferrer'
             className='text-2xl hover:text-[#a855f7] transition-colors'
           >
-            <FaLinkedin />
+            <Suspense fallback={<span className='w-6 h-6 inline-block' />}> 
+              <FaLinkedin />
+            </Suspense>
           </a>
           <a
             href='https://github.com/DEEPANSHUDDD'
@@ -24,7 +29,9 @@ const Footer = () => {
             rel='noopener noreferrer'
             className='text-2xl hover:text-[#a855f7] transition-colors'
           >
-            <FaGithub />
+            <Suspense fallback={<span className='w-6 h-6 inline-block' />}> 
+              <FaGithub />
+            </Suspense>
           </a>
           <a
             href='https://www.instagram.com/deepanshu_5226/'
@@ -32,7 +39,9 @@ const Footer = () => {
             rel='noopener noreferrer'
             className='text-2xl hover:text-[#a855f7] transition-colors'
           >
-            <FaInstagram />
+            <Suspense fallback={<span className='w-6 h-6 inline-block' />}> 
+              <FaInstagram />
+            </Suspense>
           </a>
         </div>
 

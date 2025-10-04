@@ -75,6 +75,7 @@ const Hero = () => {
       </div>
 
       {/* 3D Canvas */}
+      {/* Defer 3D canvas mount until in-view via App-level LazyViewport */}
       <ComputersCanvas />
 
       {/* Scroll indicator */}

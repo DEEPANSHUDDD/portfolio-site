@@ -14,7 +14,9 @@ export const isWebGLAvailable = () => {
 
 export const getMobileOptimizedDpr = () => {
   if (isMobileDevice()) {
-    return Math.min(window.devicePixelRatio, 1.5);
+    // Cap DPR on mobile devices to reduce GPU and memory load
+    return Math.min(window.devicePixelRatio || 1, 1.5);
   }
-  return [1, 2];
+  // Prefer crisp rendering on desktop while allowing the browser to pick between 1x and 2x
+  return [1, 1.5];
 };

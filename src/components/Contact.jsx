@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import toast from 'react-hot-toast';
+let toastRef; // avoid importing react-hot-toast in initial chunk
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -32,6 +32,11 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
+    // Lazily import toast to keep initial bundle smaller
+    if (!toastRef) {
+      import('react-hot-toast').then(m => { toastRef = m.default; }).catch(() => {});
+    }
+
     emailjs
       .send(
         'service_ifmlkig',
@@ -48,7 +53,7 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          toast.success('✅ Thank you! Your message has been sent.', {
+          toastRef?.success('✅ Thank you! Your message has been sent.', {
             style: {
               background: '#1a1a2e',
               color: '#fff',
@@ -68,7 +73,7 @@ const Contact = () => {
           setLoading(false);
           console.error(error);
 
-          toast.error('❌ Something went wrong. Please try again.', {
+          toastRef?.error('❌ Something went wrong. Please try again.', {
             style: {
               background: '#1a1a2e',
               color: '#fff',

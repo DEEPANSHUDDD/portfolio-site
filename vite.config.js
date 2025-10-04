@@ -22,4 +22,16 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5000,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei', 'maath'],
+          'motion-vendor': ['framer-motion'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1500,
+  },
 })

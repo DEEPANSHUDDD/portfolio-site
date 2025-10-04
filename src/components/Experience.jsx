@@ -5,6 +5,8 @@ import {
 } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
 
+// Import CSS lazily to keep initial chunk smaller
+// This file itself is already lazy-loaded via React.lazy in App
 import "react-vertical-timeline-component/style.min.css";
 
 import { styles } from "../styles";
@@ -27,6 +29,8 @@ const ExperienceCard = ({ experience }) => {
           <img
             src={experience.icon}
             alt={experience.company_name}
+            loading='lazy'
+            decoding='async'
             className='w-[60%] h-[60%] object-contain'
           />
         </div>

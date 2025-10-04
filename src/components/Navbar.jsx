@@ -43,7 +43,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={myPhoto} alt='Deepanshu' className='w-10 h-10 rounded-full object-cover border-2 border-purple-500' />
+          <img src={myPhoto} alt='Deepanshu' loading='lazy' decoding='async' className='w-10 h-10 rounded-full object-cover border-2 border-purple-500' />
           <p className='text-white text-[18px] font-bold cursor-pointer'>
             Deepanshu.dev
           </p>
