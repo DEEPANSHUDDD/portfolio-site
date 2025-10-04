@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/portfolio-site/',   // 👈 this fixes GitHub Pages blank page
+  base: './',   // 👈 this fixes GitHub Pages blank page
 
   server: {
     host: '0.0.0.0',
