@@ -15,6 +15,7 @@ import {
   git,
   figma,
   docker,
+  student,
   meta,
   starbucks,
   tesla,
@@ -116,55 +117,51 @@ const technologies = [
 
 const experiences = [
   {
-    title: "React.js Developer",
-    company_name: "Starbucks",
-    icon: starbucks,
-    iconBg: "#383E56",
-    date: "March 2020 - April 2021",
+    title: "Frontend Learning",
+    company_name: "Self Learning",
+    icon: html, // update with your logo
+    iconBg: "#F06529",
+    date: "April 2024 - September 2024",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Learned HTML, CSS, and JavaScript fundamentals.",
+      "Built small static websites and practiced responsive design.",
+      "Gained strong foundation in frontend web development.",
     ],
   },
   {
-    title: "React Native Developer",
-    company_name: "Tesla",
-    icon: tesla,
-    iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
+    title: "React.js Projects",
+    company_name: "Personal Portfolio",
+    icon: reactjs, // update with your logo
+    iconBg: "#61DAFB",
+    date: "October 2024 - March 2025",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Created portfolio website with React and Tailwind CSS.",
+      "Added animations using Framer Motion.",
+      "Learned component-driven development and state management.",
     ],
   },
   {
-    title: "Web Developer",
-    company_name: "Shopify",
-    icon: shopify,
-    iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
+    title: "3D Web Development",
+    company_name: "Self Projects",
+    icon: threejs, // update with your logo
+    iconBg: "#915EFF",
+    date: "April 2025 - September 2025",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developed 3D portfolio sections with Three.js.",
+      "Experimented with Vite and advanced animations.",
+      "Started exploring backend and full-stack concepts.",
     ],
   },
   {
-    title: "Full stack Developer",
-    company_name: "Meta",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
+    title: "Student Developer",
+    company_name: "Current",
+    icon: student, // custom logo you add
+    iconBg: "#1E1E2E",
+    date: "October 2025 - Present",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Building full-stack applications with React and Node.js.",
+      "Preparing for internships and placements.",
+      "Working on larger personal projects and refining skills.",
     ],
   },
 ];
@@ -172,27 +169,24 @@ const experiences = [
 const testimonials = [
   {
     testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+      "He consistently showed strong skills in web design and front-end development. His attention to detail and ability to learn fast made him stand out in every group project.",
+    name: "Prof. Meera Sharma",
+    designation: "Mentor & Lecturer",
+    company: "Department of Computer Science, Gautam Buddha University",
   },
   {
     testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+      "I had the chance to work with him on several college assignments — he’s reliable, creative, and always helps the team stay organized. His React and design knowledge really helped us complete our project on time.",
+    name: "Arjun Singh",
+    designation: "Teammate",
+    company: "BCA Program, IIIMT College",
   },
   {
     testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+      "He took the lead in designing and developing our project portfolio website. The clean design and animations impressed both students and faculty.",
+    name: "Priya Verma",
+    designation: "Project Partner",
+    company: "IIIMT College",
   },
 ];
 

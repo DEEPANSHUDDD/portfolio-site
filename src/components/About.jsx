@@ -50,17 +50,18 @@ const About = () => {
             >
               <span>📄</span> Download CV
             </a>
-            <button 
+            <button
               onClick={() => {
-                const workSection = document.getElementById('work');
-                if (workSection) {
-                  workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const projectsSection = document.getElementById('projects');
+                if (projectsSection) {
+                  projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
               className='border-2 border-[#915EFF] text-[#915EFF] hover:bg-[#915EFF] hover:text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center gap-2'
             >
               <span>👁️</span> View Projects
             </button>
+
           </div>
         </motion.div>
 
