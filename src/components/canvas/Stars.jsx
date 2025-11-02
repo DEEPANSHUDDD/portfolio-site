@@ -79,6 +79,7 @@ const StarsCanvas = () => {
           antialias: !isMobile,
           powerPreference: isMobile ? 'low-power' : 'default'
         }}
+        style={{ touchAction: 'pan-y' }}
         performance={{ min: isMobile ? 0.3 : 0.5 }}
         className='touch-pan-y'
       >

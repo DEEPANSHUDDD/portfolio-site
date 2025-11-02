@@ -7,8 +7,7 @@ import WebGLFallback from "../WebGLFallback";
 import { isMobileDevice, isWebGLAvailable, getMobileOptimizedDpr, assetUrl } from "../../utils/deviceDetection";
 
 const Earth = ({ isMobile }) => {
-  // Use absolute path based on Vite base URL for reliability
-  const earth = useGLTF(assetUrl("/planet/scene.gltf"));
+  const earth = useGLTF(`${import.meta.env.BASE_URL}planet/scene.gltf`);
   const [modelReady, setModelReady] = useState(false);
 
   useEffect(() => {
@@ -82,6 +81,13 @@ const EarthCanvas = () => {
     );
   }
 
+  // On mobile, render a static gradient container to avoid WebGL instability
+  if (isMobile) {
+    return (
+      <div className="w-full h-full min-h-[300px] bg-gradient-to-b from-gray-900 to-black rounded-xl" />
+    );
+  }
+
   return (
     <Canvas
       shadows={false}
@@ -93,7 +99,7 @@ const EarthCanvas = () => {
         powerPreference: 'high-performance'
       }}
       camera={{
-        fov: 45,
+        fov: isMobile ? 55 : 45,
         near: 0.1,
         far: 200,
         position: [-4, 3, 6],
