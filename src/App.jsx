@@ -44,7 +44,9 @@ const App = () => {
           <Contact />
           <LazyViewport minHeight={200}>
             <Suspense fallback={null}>
-              <StarsCanvas />
+              <div className='[&>canvas]:touch-pan-y'>
+                <StarsCanvas />
+              </div>
             </Suspense>
           </LazyViewport>
         </div>

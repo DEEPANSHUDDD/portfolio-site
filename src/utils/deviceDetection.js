@@ -14,9 +14,18 @@ export const isWebGLAvailable = () => {
 
 export const getMobileOptimizedDpr = () => {
   if (isMobileDevice()) {
-    // Cap DPR on mobile devices to reduce GPU and memory load
-    return Math.min(window.devicePixelRatio || 1, 1.5);
+    // Force DPR to 1 on mobile to prevent oversized canvases and heavy GPU load
+    return 1;
   }
-  // Prefer crisp rendering on desktop while allowing the browser to pick between 1x and 2x
+  // On desktop, allow between 1 and 1.5 for quality without overloading
   return [1, 1.5];
+};
+
+/**
+ * Builds an absolute URL for assets served from Vite's base path.
+ * Ensures correct paths on GitHub Pages and similar deployments.
+ */
+export const assetUrl = (relativePath) => {
+  const trimmed = String(relativePath || '').replace(/^\/?/, '');
+  return `${import.meta.env.BASE_URL}${trimmed}`;
 };
