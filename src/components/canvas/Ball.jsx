@@ -84,15 +84,6 @@ const BallCanvas = ({ icon }) => {
     );
   }
 
-  // On mobile, prefer a static icon image for stability
-  if (isMobile) {
-    return (
-      <div className="w-full h-full min-h-[112px] flex items-center justify-center">
-        <img src={icon} alt="tech" className="w-20 h-20 object-contain" loading="lazy" decoding="async" />
-      </div>
-    );
-  }
-
   return (
     <Canvas
       frameloop='demand'
@@ -102,7 +93,6 @@ const BallCanvas = ({ icon }) => {
         antialias: !isMobile,
         powerPreference: isMobile ? 'low-power' : 'default'
       }}
-      style={{ touchAction: 'pan-y' }}
       performance={{ min: isMobile ? 0.5 : 0.75 }}
     >
       <Suspense fallback={<CanvasLoader />}>
