@@ -13,6 +13,16 @@
   color-scheme: dark;
 }
 
+/* Prevent scroll lock by allowing vertical panning on interactive regions */
+.touch-pan-y {
+  touch-action: pan-y;
+}
+
+/* Apply to Canvas elements when nested via utility class selector */
+canvas.touch-pan-y, .touch-pan-y canvas {
+  touch-action: pan-y !important;
+}
+
 .hash-span {
   margin-top: -100px;
   padding-bottom: 100px;

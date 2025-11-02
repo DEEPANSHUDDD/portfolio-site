@@ -52,10 +52,12 @@ const Ball = ({ imgUrl, isMobile }) => {
 const BallCanvas = ({ icon }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [webGLSupported, setWebGLSupported] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     setWebGLSupported(isWebGLAvailable());
     setIsMobile(isMobileDevice());
+    setIsDesktop(!isMobileDevice());
 
     const handleResize = () => {
       setIsMobile(isMobileDevice());
@@ -64,6 +66,15 @@ const BallCanvas = ({ icon }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Render static placeholder on mobile to avoid excessive canvases
+  if (!isDesktop) {
+    return (
+      <div className="w-full h-full min-h-[200px] rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+        <img src={icon} alt="tech" loading="lazy" decoding="async" className="w-12 h-12 object-contain opacity-90" />
+      </div>
+    );
+  }
 
   if (!webGLSupported) {
     return (

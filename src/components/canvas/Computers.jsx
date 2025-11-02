@@ -62,12 +62,14 @@ const Computers = ({ isMobile }) => {
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [webGLSupported, setWebGLSupported] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     setWebGLSupported(isWebGLAvailable());
     
     const mediaQuery = window.matchMedia("(max-width: 768px)");
     setIsMobile(mediaQuery.matches);
+    setIsDesktop(!mediaQuery.matches);
 
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
@@ -100,7 +102,7 @@ const ComputersCanvas = () => {
   return (
     <Canvas
       frameloop='demand'
-      shadows={!isMobile}
+      shadows={false}
       dpr={getMobileOptimizedDpr()}
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ 

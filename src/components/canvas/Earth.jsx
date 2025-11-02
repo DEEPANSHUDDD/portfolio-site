@@ -4,7 +4,7 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 import WebGLFallback from "../WebGLFallback";
-import { isMobileDevice, isWebGLAvailable, getMobileOptimizedDpr } from "../../utils/deviceDetection";
+import { isMobileDevice, isWebGLAvailable, getMobileOptimizedDpr, assetUrl } from "../../utils/deviceDetection";
 
 const Earth = ({ isMobile }) => {
   const earth = useGLTF(`${import.meta.env.BASE_URL}planet/scene.gltf`);
@@ -49,10 +49,12 @@ const Earth = ({ isMobile }) => {
 const EarthCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [webGLSupported, setWebGLSupported] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     setWebGLSupported(isWebGLAvailable());
     setIsMobile(isMobileDevice());
+    setIsDesktop(!isMobileDevice());
 
     const handleResize = () => {
       setIsMobile(isMobileDevice());
@@ -61,6 +63,15 @@ const EarthCanvas = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // On mobile, replace 3D earth with a gradient globe placeholder
+  if (!isDesktop) {
+    return (
+      <div className="w-full h-full min-h-[300px] flex items-center justify-center">
+        <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 shadow-xl shadow-purple-900/30" />
+      </div>
+    );
+  }
 
   if (!webGLSupported) {
     return (
@@ -79,13 +90,13 @@ const EarthCanvas = () => {
 
   return (
     <Canvas
-      shadows={!isMobile}
+      shadows={false}
       frameloop='demand'
       dpr={getMobileOptimizedDpr()}
       gl={{ 
         preserveDrawingBuffer: false,
-        antialias: !isMobile,
-        powerPreference: isMobile ? 'low-power' : 'high-performance'
+        antialias: false,
+        powerPreference: 'high-performance'
       }}
       camera={{
         fov: isMobile ? 55 : 45,

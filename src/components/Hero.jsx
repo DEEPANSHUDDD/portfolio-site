@@ -3,6 +3,7 @@ import { Typewriter } from "react-simple-typewriter";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import LazyViewport from "./LazyViewport";
 
 // Variants for word-by-word animation
 const sentence = {
